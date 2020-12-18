@@ -12,6 +12,8 @@ from src.factory import get_model
 pretrained_model = "https://github.com/yu4u/age-gender-estimation/releases/download/v0.6/EfficientNetB3_224_weights.11-3.44.hdf5"
 modhash = '6d7f7b7ced093a8b3ef6399163da6ece'
 
+'/usr/local/data/images/faces/Processed-VN_Celeb/VN_CELEB/images/person_33'
+
 
 def get_args():
     parser = argparse.ArgumentParser(description="This script detects faces from web cam input, "
@@ -123,13 +125,14 @@ def main():
             for i, d in enumerate(detected):
                 label = "{}, {}".format(int(predicted_ages[i]),
                                         "M" if predicted_genders[i][0] < 0.5 else "F")
-                draw_label(img, (d.left(), d.top()), label)
+                print(label)
+                # draw_label(img, (d.left(), d.top()), label)
 
-        cv2.imshow("result", img)
-        key = cv2.waitKey(-1) if image_dir else cv2.waitKey(30)
+            # cv2.imshow(img)
+            # key = cv2.waitKey(-1) if image_dir else cv2.waitKey(30)
 
-        if key == 27:  # ESC
-            break
+            # if key == 27:  # ESC
+            #     break
 
 
 if __name__ == '__main__':
